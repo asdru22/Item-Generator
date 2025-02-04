@@ -24,5 +24,12 @@
         }
       ]
     }
+  },
+  "texture": {
+    "x": 10,
+    "y": 13,
+    "search": "pixel"
   }
 }
+
+"texture": {"x": 10, "y": 13, "search": "pixel"}

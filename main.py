@@ -1,6 +1,8 @@
 from pathlib import Path
 import json
 import copy
+from PIL import Image
+
 
 class Item:
     def __init__(self, item_id, data, lang, _settings):
@@ -17,7 +19,7 @@ class Item:
 
     def make(self):
         self.lang[f"item.{self.namespace}.{self.id}"] = self.data.get("name")
-        components = self.data.get("components",{})
+        components = self.data.get("components", {})
 
         if "template" in self.data:
             input_custom_data = self.data.get("custom_data", {})
@@ -36,6 +38,30 @@ class Item:
 
         if "model" in self.data:
             self.make_model()
+
+        if "texture" in self.data:
+            self.make_texture(self.data.get("texture"))
+
+    def make_texture(self, texture):
+        if isinstance(texture, dict) and self.settings.sprites:
+            x,y = texture.get("x",0), texture.get("y",0)
+            search = texture.get("search","texture")
+            if search == "pixel":
+                x = x//16
+                y = y//16
+            self.make_texture_from_spritesheet(x,y)
+
+    def make_texture_from_spritesheet(self, x, y):
+        texture_path = self.settings.get_path("textures") / f"{self.id}.png"
+        if 0 <= y < len(self.settings.sprites) and 0 <= x < len(self.settings.sprites[0]):
+            texture = self.settings.sprites[y][x]
+            if texture:
+                texture.save(texture_path)
+                print(f"Created ...{Path(*texture_path.parts[-4:])}")
+            else:
+                print("Selected does not exist.")
+        else:
+            print("Invalid texture index.")
 
     def make_lore(self, lore):
         return [
@@ -259,6 +285,40 @@ def resolve_placeholders(data, item):
     return data
 
 
+def make_sprites(image_path):
+    img = Image.open(image_path).convert("RGBA")
+    width, height = img.size
+
+    # Ensure dimensions are multiples of 16
+    assert width % 16 == 0 and height % 16 == 0, "Image dimensions must be multiples of 16."
+
+    # Calculate number of textures in each dimension
+    rows = height // 16
+    cols = width // 16
+
+    # Create a matrix to store textures
+    texture_matrix = [[None for _ in range(cols)] for _ in range(rows)]
+
+    # Extract each 16x16 texture
+    for row in range(rows):
+        for col in range(cols):
+            left = col * 16
+            upper = row * 16
+            right = left + 16
+            lower = upper + 16
+
+            # Crop the texture
+            texture = img.crop((left, upper, right, lower))
+
+            # Check if the texture is fully transparent
+            if all(pixel[3] == 0 for pixel in texture.getdata()):
+                continue  # Skip fully transparent textures
+
+            texture_matrix[row][col] = texture
+
+    return texture_matrix
+
+
 class Settings:
     def __init__(self, _settings):
         self.namespace = _settings.get("namespace", "item_gen")
@@ -269,6 +329,12 @@ class Settings:
 
         self.datapack_folder = Path(_settings.get("datapack", None)).resolve()
         self.resourcepack_folder = Path(_settings.get("resourcepack", None)).resolve()
+
+        if "spritesheet" in _settings:
+            self.sprites = make_sprites(_settings.get("spritesheet"))
+            print(self.sprites)
+        else:
+            self.sprites = None
 
         self.templates = {
             "material": material(),
@@ -295,7 +361,7 @@ class Settings:
             "items": self.resourcepack_folder / f"assets/{self.namespace}/items",
             "lang": self.resourcepack_folder / f"assets/{self.namespace}/lang/en_us.json",
             "models": self.resourcepack_folder / f"assets/{self.namespace}/models/item",
-            "textures": self.resourcepack_folder / f"assets/{self.namespace}/textures"
+            "textures": self.resourcepack_folder / f"assets/{self.namespace}/textures/item"
         }
 
     def __str__(self):
