@@ -144,7 +144,7 @@ def write_json(path, content, indentation):
 
 
 def check_templates(item, template):
-    print(f"Using Template: {}")
+    print(f"Using Template: {template}")
     # Merge components from template into item's components
     item.data['components'] = deep_merge(item.data.get('components', {}),
                                          item.settings.templates.get(template, {}).get('components', {}))
