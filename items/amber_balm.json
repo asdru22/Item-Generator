@@ -1,5 +1,5 @@
 {
-  "translation": "Amber Balm",
+  "name": "Amber Balm",
   "base": "minecraft:poisonous_potato",
   "components": {
     "minecraft:max_stack_size": 16,

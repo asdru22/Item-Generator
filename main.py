@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-
+import copy
 
 class Item:
     def __init__(self, item_id, data, lang, _settings):
@@ -16,12 +16,16 @@ class Item:
         return f"ID: {self.id}\nData: {self.data}"
 
     def make(self):
-        self.lang[f"item.{self.namespace}.{self.id}"] = self.data.get("translation")
+        self.lang[f"item.{self.namespace}.{self.id}"] = self.data.get("name")
+        components = self.data.get("components",{})
+
         if "template" in self.data:
             input_custom_data = self.data.get("custom_data", {})
             check_templates(self, self.data.get("template"))
             self.data.get("custom_data", {}).update(input_custom_data)
+        print(self.data.get("components"))
 
+        self.data.get("components").update(components)
         self.make_components()
 
         self.make_loot_table()
@@ -165,15 +169,20 @@ def write_json(path, content, indentation):
 def check_templates(item, template):
     print(f"Using Template: {template}")
 
-    item.data.update(item.settings.templates.get(template, {}))
-    # Merge components from template into item's components
-    item.data['components'] = deep_merge(item.data.get('components', {}),
-                                         item.settings.templates.get(template, {}).get('components', {}))
+    # Deep copy the template before updating to prevent reference issues
+    template_data = copy.deepcopy(item.settings.templates.get(template, {}))
+    item.data.update(template_data)
+
+    # Merge components separately to avoid shared references
+    item.data['components'] = deep_merge(
+        item.data.get('components', {}),
+        template_data.get('components', {})  # Use the copied template
+    )
 
     # If template is "block", update item.data instead of reassigning item
     if template == "block":
         resolved_data = resolve_placeholders(block(), item)
-        item.data.update(resolved_data)  # This updates item.data instead of replacing item itself
+        item.data.update(resolved_data)  # Ensures we update instead of replacing item itself
 
 
 def deep_merge(dict1, dict2):

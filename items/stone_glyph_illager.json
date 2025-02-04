@@ -1,5 +1,5 @@
 {
-  "translation": "Stone Glyph",
+  "name": "Stone Glyph",
   "template": "material",
   "custom_data": {
     "glyph": "illager"
@@ -10,5 +10,21 @@
     "contents": [
       "Illager"
     ]
+  },
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      "SSS",
+      "SES",
+      "SSS"
+    ],
+    "key": {
+      "S": "minecraft:stone",
+      "E": "minecraft:emerald_block"
+    },
+    "advancement": {
+      "trigger_item": "minecraft:emerald_block"
+    }
   }
 }

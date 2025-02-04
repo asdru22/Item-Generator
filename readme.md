@@ -1,7 +1,7 @@
 # How to use
 
 Download `main.py`, make a `settings.json` file in the same folder and also an `items` folder. Then fill them out
-according to what you need. Run the main file every time you need to generate/update your items.  
+according to what you need. Run the main file every time you need to generate/update your items.     
 If you find any bugs or have suggestions [let me know](https://discord.gg/WWvYkBFQwn).  
 
 # `settings.json`
@@ -89,7 +89,7 @@ provided in `"cases"`. If `"type"` is missing, it will default to the components
 
 | Key             | Value             | Explanation                                                                                                             | Example                                                                             |
 |-----------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| `"translation"` | string            | What the item's name should be translated to.                                                                           | `"My Cool Sword"`                                                                   |
+| `"name"`        | string            | What the item's id should be translated to.                                                                             | `"My Cool Sword"`                                                                   |
 | `"base"`        | string            | The base item used. defaults to `"minecraft:poisonous_potato"`                                                          | `"minecraft:diamond_sword"`                                                         |
 | `"components"`  | map               | The item's components                                                                                                   | `{"minecraft:max_damage": 6}`                                                       |
 | `"recipe"`      | map               | A variation of the item's crafting recipe                                                                               | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#recipe) |
