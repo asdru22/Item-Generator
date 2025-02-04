@@ -23,7 +23,6 @@ class Item:
             input_custom_data = self.data.get("custom_data", {})
             check_templates(self, self.data.get("template"))
             self.data.get("custom_data", {}).update(input_custom_data)
-        print(self.data.get("components"))
 
         self.data.get("components").update(components)
         self.make_components()

@@ -1,0 +1,34 @@
+{
+  "base": "poisonous_potato",
+  "name": "Fog Horn",
+  "components": {
+    "!minecraft:food": {},
+    "minecraft:consumable": {
+      "animation": "toot_horn",
+      "consume_seconds": 100000,
+      "has_consume_particles": false
+    },
+    "minecraft:item_model": "haywire:fog_horn",
+    "minecraft:rarity": "uncommon",
+    "minecraft:max_stack_size": 1,
+    "minecraft:item_name": {
+      "translate": "item.haywire.fog_horn"
+    },
+    "minecraft:lore": [
+      {
+        "translate": "item.haywire.tooltip",
+        "color": "white",
+        "italic": false,
+        "font": "haywire:main",
+        "with": [
+          {
+            "translate": "pack.haywire"
+          }
+        ]
+      }
+    ]
+  },
+  "custom_data": {
+    "charges": 14
+  }
+}
