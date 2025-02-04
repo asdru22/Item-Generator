@@ -1,6 +1,6 @@
 # How to use
 Download `main.py`, make a `settings.json` file in the same folder and also an `items` folder. Then fill them out according to what you need.  
-If you find any bugs or have suggestions [https://discord.gg/WWvYkBFQwn](let me know).  
+If you find any bugs or have suggestions [let me know](https://discord.gg/WWvYkBFQwn).  
 
 # `settings.json`
 
