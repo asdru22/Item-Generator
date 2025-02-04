@@ -52,5 +52,9 @@
     "advancement": {
       "trigger_item": "minecraft:honey_bottle"
     }
+  },
+  "texture": {
+    "x": 0,
+    "y": 4
   }
 }

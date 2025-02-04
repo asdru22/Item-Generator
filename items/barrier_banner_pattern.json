@@ -5,5 +5,9 @@
     "max_stack_size": 1,
     "minecraft:provides_banner_patterns": "#haywire:pattern_item/barrier",
     "minecraft:rarity": "rare"
+  },
+  "texture": {
+    "x": 0,
+    "y": 5
   }
 }

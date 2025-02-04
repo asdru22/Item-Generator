@@ -1,4 +1,8 @@
 {
   "name": "Mistral Ingot",
-  "template": "material"
+  "template": "material",
+  "texture": {
+    "x": 0,
+    "y": 3
+  }
 }
