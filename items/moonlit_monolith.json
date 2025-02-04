@@ -2,5 +2,22 @@
   "translation": "Moonlit Monolith",
   "base": "minecraft:furnace",
   "template": "block",
-  "type": "moon"
+  "type": "moon",
+  "recipe" : {
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "pattern": [
+      "TTT",
+      "CNC",
+      "TTT"
+    ],
+    "key": {
+      "T": "minecraft:polished_tuff",
+      "N": "minecraft:nether_star",
+      "C": "minecraft:chiseled_tuff"
+    },
+    "advancement": {
+      "trigger_item": "minecraft:nether_star"
+    }
+  }
 }

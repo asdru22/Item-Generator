@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 
+
 class Item:
     def __init__(self, item_id, data, lang, _settings):
         self.components = {}
@@ -22,6 +23,7 @@ class Item:
             self.data.get("custom_data", {}).update(input_custom_data)
 
         self.make_components()
+
         self.make_loot_table()
         if "recipe" in self.data:
             self.make_recipe(self.data.get("recipe"))
@@ -31,6 +33,17 @@ class Item:
 
         if "model" in self.data:
             self.make_model()
+
+    def make_lore(self, lore):
+        return [
+            {
+                "translate": f"item.{self.namespace}.{self.id}.lore{n}",
+                "color": lore.get("color", "gray"),
+                "italic": lore.get("italic", False),
+            }
+            for n, text in enumerate(lore.get("contents", []))
+            if self.lang.setdefault(f"item.{self.namespace}.{self.id}.lore{n}", text) is not None
+        ]
 
     def make_model(self):
         model_path = self.settings.get_path("models") / f"{self.id}.json"
@@ -117,6 +130,12 @@ class Item:
             "translate": f"item.{self.namespace}.{self.id}"
         }
 
+        if "lore" in self.data:
+            if "minecraft:lore" not in self.components:
+                self.components["minecraft:lore"] = []
+            self.components["minecraft:lore"] = self.make_lore(self.data["lore"]) + self.components.get(
+                "minecraft:lore", [])
+
     def match_component(self):
         fallback = self.settings.common_components.get("fallback")
         if "type" in self.data:
@@ -145,6 +164,8 @@ def write_json(path, content, indentation):
 
 def check_templates(item, template):
     print(f"Using Template: {template}")
+
+    item.data.update(item.settings.templates.get(template, {}))
     # Merge components from template into item's components
     item.data['components'] = deep_merge(item.data.get('components', {}),
                                          item.settings.templates.get(template, {}).get('components', {}))

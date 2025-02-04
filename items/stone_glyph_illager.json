@@ -1,0 +1,14 @@
+{
+  "translation": "Stone Glyph",
+  "template": "material",
+  "custom_data": {
+    "glyph": "illager"
+  },
+  "lore": {
+    "color": "gray",
+    "italic": false,
+    "contents": [
+      "Illager"
+    ]
+  }
+}
