@@ -1,0 +1,62 @@
+{
+  "namespace": "haywire",
+  "datapack": "C:\\Users\\Ale\\Documents\\GitHub\\Haywire\\datapack",
+  "resourcepack": "C:\\Users\\Ale\\Documents\\GitHub\\Haywire\\resourcepack",
+  "items": "C:\\Users\\Ale\\Documents\\GitHub\\Item-Generator\\items",
+  "templates": "C:\\Users\\Ale\\Documents\\GitHub\\Item-Generator\\templates",
+  "auto_id" : true,
+  "meta": {
+    "indent": 2,
+    "order_lang": true
+  },
+  "common_components": {
+    "match": "source",
+    "cases": {
+      "moon": {
+        "minecraft:lore": [
+          {
+            "translate": "item.haywire.tooltip_moon",
+            "color": "white",
+            "italic": false,
+            "font": "haywire:main",
+            "with": [
+              {
+                "translate": "pack.haywire"
+              }
+            ]
+          }
+        ]
+      },
+      "cog": {
+        "minecraft:lore": [
+          {
+            "translate": "item.haywire.tooltip_cog",
+            "color": "white",
+            "italic": false,
+            "font": "haywire:main",
+            "with": [
+              {
+                "translate": "pack.haywire"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "minecraft:lore": [
+        {
+          "translate": "item.haywire.tooltip",
+          "color": "white",
+          "italic": false,
+          "font": "haywire:main",
+          "with": [
+            {
+              "translate": "pack.haywire"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "translation": "Moonlit Monolith",
+  "base": "minecraft:furnace",
+  "template": "block",
+  "type": "moon"
+}
