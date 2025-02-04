@@ -1,15 +1,15 @@
 # `settings.json`
 
-| Key                   | Value   | Explanation                                                                                                    | Example                                    |
-|-----------------------|---------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| `"namespace"`         | string  | Datapack and resourcepack namespace                                                                            | `"my_pack"`                                |
-| `"datapack"`          | path    | Path to the datapack folder                                                                                    | `"C:\User\Documents\my_pack\datapack"`     |
-| `"resourcepack"`      | path    | Path to the resourcepack folder                                                                                | `"C:\User\Documents\my_pack\resourcepack"` |
-| `"items"`             | path    | Path to the `items.json` folder                                                                                | `"C:\User\Documents\my_pack\items"`        |
-| `"meta"`              | map     | Map containing information on how the generator should process certain data                                    | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#meta)                                  |
-| `"common_components"` | map     | Indicates components that should be shared across all items (ie. lore, tooltip)                                | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#common_components)                                  |
-| `"auto_id"`           | boolean | If set to true, `the custom_data` component will have this data `{<namespace>:{"id":<id>}}`                    | `true`                                     |
-| `"templates"`         | path    | The path to the custom templates folder. The filename will become the key, and its content the actual template | See `material` and block `templates`       |
+| Key                   | Value   | Explanation                                                                                                    | Example                                                                                        |
+|-----------------------|---------|----------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| `"namespace"`         | string  | Datapack and resourcepack namespace                                                                            | `"my_pack"`                                                                                    |
+| `"datapack"`          | path    | Path to the datapack folder                                                                                    | `"C:\User\Documents\my_pack\datapack"`                                                         |
+| `"resourcepack"`      | path    | Path to the resourcepack folder                                                                                | `"C:\User\Documents\my_pack\resourcepack"`                                                     |
+| `"items"`             | path    | Path to the `items.json` folder                                                                                | `"C:\User\Documents\my_pack\items"`                                                            |
+| `"meta"`              | map     | Map containing information on how the generator should process certain data                                    | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#meta)              |
+| `"common_components"` | map     | Indicates components that should be shared across all items (ie. lore, tooltip)                                | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#common_components) |
+| `"auto_id"`           | boolean | If set to true, `the custom_data` component will have this data `{<namespace>:{"id":<id>}}`                    | `true`                                                                                         |
+| `"templates"`         | path    | The path to the custom templates folder. The filename will become the key, and its content the actual template | See `material` and block `templates`                                                           |
 
 ## `meta`
 
@@ -81,17 +81,17 @@ provided in `"cases"`. If `"type"` is missing, it will default to the components
 
 # Item`.json`
 
-| Key             | Value             | Explanation                                                                                                             | Example                                                                |
-|-----------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
-| `"translation"` | string            | What the item's name should be translated to.                                                                           | `"My Cool Sword"`                                                      |
-| `"base"`        | string            | The base item used. defaults to `"minecraft:poisonous_potato"`                                                          | `"minecraft:diamond_sword"`                                            |
-| `"components"`  | map               | The item's components                                                                                                   | `{"minecraft:max_damage": 6}`                                          |
-| `"recipe"`      | map               | A variation of the item's crafting recipe                                                                               | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#recipe)                                                              |
-| `"item"`        | `"simple"` or map | If `"simple"`, the basic item json will be generated. Otherwise an entire item model definition json can be pasted      | `"simple"` or https://misode.github.io/assets/item/                    |
-| `"model"`       | string or map     | If it's a string, it will generate a basic item model, where the value is the parent. Otherwise any model can be pasted | `"minecraft:item/generated"` or https://misode.github.io/assets/model/ |
-| `"custom_data"` | map               | All data provided will be placed in `"minecraft:custom_data".<namespace>`                                               | `{uses_left:10}`                                                       |
-| `"template"`    | string            | Name of the template to use                                                                                             | `"material"`                                                           |
-| `"lore"`        | map               | Shorthand for adding lore with translated text                                                                          | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#lore)                                                              |
+| Key             | Value             | Explanation                                                                                                             | Example                                                                             |
+|-----------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| `"translation"` | string            | What the item's name should be translated to.                                                                           | `"My Cool Sword"`                                                                   |
+| `"base"`        | string            | The base item used. defaults to `"minecraft:poisonous_potato"`                                                          | `"minecraft:diamond_sword"`                                                         |
+| `"components"`  | map               | The item's components                                                                                                   | `{"minecraft:max_damage": 6}`                                                       |
+| `"recipe"`      | map               | A variation of the item's crafting recipe                                                                               | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#recipe) |
+| `"item"`        | `"simple"` or map | If `"simple"`, the basic item json will be generated. Otherwise an entire item model definition json can be pasted      | `"simple"` or https://misode.github.io/assets/item/                                 |
+| `"model"`       | string or map     | If it's a string, it will generate a basic item model, where the value is the parent. Otherwise any model can be pasted | `"minecraft:item/generated"` or https://misode.github.io/assets/model/              |
+| `"custom_data"` | map               | All data provided will be placed in `"minecraft:custom_data".<namespace>`                                               | `{uses_left:10}`                                                                    |
+| `"template"`    | string            | Name of the template to use                                                                                             | `"material"`                                                                        |
+| `"lore"`        | map               | Shorthand for adding lore with translated text                                                                          | [See below](https://github.com/asdru22/Item-Generator/blob/master/readme.md#lore)   |
 
 ## `"recipe"`
 
@@ -131,7 +131,9 @@ translation key.
   ]
 }
 ```
+
 for example this will generate an item with lore
+
 ```json
 [
   {
