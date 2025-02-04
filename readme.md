@@ -90,6 +90,7 @@ provided in `"cases"`. If `"type"` is missing, it will default to the components
 | `"item"`        | `"simple"` or map | If `"simple"`, the basic item json will be generated. Otherwise an entire item model definition json can be pasted      | `"simple"` or https://misode.github.io/assets/item/                    |
 | `"model"`       | string or map     | If it's a string, it will generate a basic item model, where the value is the parent. Otherwise any model can be pasted | `"minecraft:item/generated"` or https://misode.github.io/assets/model/ |
 | `"custom_data"` | map               | All data provided will be placed in `"minecraft:custom_data".<namespace>`                                               | `{uses_left:10}`                                                       |
+| `"template"`    | string            | Name of the template to use                                                                                             | `"material"`                                                           |
 
 ## `"recipe"`
 
@@ -182,3 +183,6 @@ The block is a bit more complex, since values like the base item, namespace and 
 and item settings.
 
 # Custom templates
+
+Json files inside the `"templates"` path specified in the `settings.json` file will be merged into the built-in
+templates' dictionary,
