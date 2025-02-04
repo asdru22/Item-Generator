@@ -1,5 +1,9 @@
 {
   "template": "material",
   "type": "moon",
-  "name": "Scarlet Key"
+  "name": "Scarlet Key",
+  "texture": {
+    "x": 1,
+    "y": 1
+  }
 }

@@ -2,6 +2,7 @@
   "template": "material",
   "name": "Totem of Reprieve",
   "components": {
+    "minecraft:max_stack_size": 1,
     "minecraft:death_protection": {
       "death_effects": [
         {

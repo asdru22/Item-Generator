@@ -26,5 +26,9 @@
     "advancement": {
       "trigger_item": "minecraft:emerald_block"
     }
+  },
+  "texture": {
+    "x": 1,
+    "y": 2
   }
 }
