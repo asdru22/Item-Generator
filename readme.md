@@ -91,6 +91,7 @@ provided in `"cases"`. If `"type"` is missing, it will default to the components
 | `"model"`       | string or map     | If it's a string, it will generate a basic item model, where the value is the parent. Otherwise any model can be pasted | `"minecraft:item/generated"` or https://misode.github.io/assets/model/ |
 | `"custom_data"` | map               | All data provided will be placed in `"minecraft:custom_data".<namespace>`                                               | `{uses_left:10}`                                                       |
 | `"template"`    | string            | Name of the template to use                                                                                             | `"material"`                                                           |
+| `"lore"`        | map               | Shorthand for adding lore with translated text                                                                          | See below                                                              |
 
 ## `"recipe"`
 
@@ -114,6 +115,38 @@ In this variation of the recipe json, the `"result"` key is removed, and `"count
 root. If omitted it will default to 1.  
 The `"advancement"` key is optional, and when present will create the advancement that will unlock the recipe when the
 player has the `"trigger_item"` in their inventory.
+
+## `"lore"`
+
+A quick way to add lore, with text that is directly translated by being immediately added to the lang file with its
+translation key.
+
+```json
+{
+  "color": "green",
+  "italic": false,
+  "contents": [
+    "My custom item",
+    "is very cool"
+  ]
+}
+```
+for example this will generate an item with lore
+```json
+[
+  {
+    "translate": "item.<namespace>.<id>.lore0",
+    "color": "green",
+    "italic": false
+  },
+  {
+    "translate": "item.<namespace>.<id>.lore1",
+    "color": "green",
+    "italic": false
+  }
+]
+
+```
 
 # What is *always* automatically generated?
 
