@@ -1,0 +1,27 @@
+{
+  "template": "material",
+  "type": "cog",
+  "name": "Screw",
+  "recipe": {
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+      " C ",
+      " CC",
+      "C  "
+    ],
+    "key": {
+      "C": [
+        "minecraft:copper_ingot"
+      ]
+    },
+    "count": 4,
+    "advancement": {
+      "trigger_item": "copper_ingot"
+    }
+  },
+  "texture": {
+    "x": 2,
+    "y": 1
+  }
+}
