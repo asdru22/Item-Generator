@@ -4,7 +4,8 @@
   "template": "material",
   "components": {
     "minecraft:rarity": "uncommon",
-    "minecraft:jukebox_playable": "haywire:balemoon_rising"
+    "minecraft:jukebox_playable": "haywire:balemoon_rising",
+    "minecraft:tooltip_style": "haywire:rare"
   },
   "texture": {
     "x": 1,

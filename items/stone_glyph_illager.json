@@ -2,7 +2,9 @@
   "name": "Stone Glyph",
   "template": "material",
   "custom_data": {
-    "glyph": "illager"
+    "glyph": {
+      "type": "illager"
+    }
   },
   "lore": {
     "color": "gray",

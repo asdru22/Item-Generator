@@ -44,12 +44,12 @@ class Item:
 
     def make_texture(self, texture):
         if isinstance(texture, dict) and self.settings.sprites:
-            x,y = texture.get("x",0), texture.get("y",0)
-            search = texture.get("search","texture")
+            x, y = texture.get("x", 0), texture.get("y", 0)
+            search = texture.get("search", "texture")
             if search == "pixel":
-                x = x//16
-                y = y//16
-            self.make_texture_from_spritesheet(x,y)
+                x = x // 16
+                y = y // 16
+            self.make_texture_from_spritesheet(x, y)
 
     def make_texture_from_spritesheet(self, x, y):
         texture_path = self.settings.get_path("textures") / f"{self.id}.png"
@@ -75,13 +75,16 @@ class Item:
         ]
 
     def make_model(self):
-        model_path = self.settings.get_path("models") / f"{self.id}.json"
+        model_path = self.settings.get_path("models")
         model = self.data.get("model")
+        self.make_model_json(model, model_path / f"{self.id}.json",self.id)
+
+    def make_model_json(self, model, model_path,item_id):
         if isinstance(model, str):
             model = {
                 "parent": model,
                 "textures": {
-                    "layer0": f"{self.settings.namespace}:item/{self.id}"
+                    "layer0": f"{self.settings.namespace}:item/{item_id}"
                 }
             }
         write_json(model_path, model, self.settings.indent)
@@ -89,11 +92,32 @@ class Item:
     def make_item(self):
         item_path = self.settings.get_path("items") / f"{self.id}.json"
         item = self.data.get("item")
+        item = item.copy() if isinstance(item, dict) else item
         if item == "simple":
             item = {
                 "model": {
                     "type": "minecraft:model",
                     "model": f"{self.settings.namespace}:item/{self.id}"
+                }
+            }
+        elif item == "gui":
+            item = {
+                "model": {
+                    "type": "minecraft:select",
+                    "property": "minecraft:display_context",
+                    "cases": [
+                        {
+                            "when": "gui",
+                            "model": {
+                                "type": "minecraft:model",
+                                "model": f"{self.settings.namespace}:item/{self.id}_gui"
+                            }
+                        }
+                    ],
+                    "fallback": {
+                        "type": "minecraft:model",
+                        "model": f"{self.settings.namespace}:item/{self.id}"
+                    }
                 }
             }
         write_json(item_path, item, self.settings.indent)
@@ -381,7 +405,7 @@ def build():
     for json_file in items_path.glob("*.json"):
         with open(json_file, encoding="utf-8") as f:
             try:
-                print(f"Processing {json_file.stem}...")
+                print(f"> Processing {json_file.stem}...")
                 data = json.load(f)
                 item = Item(json_file.stem, data, lang, settings)
                 item.make()
