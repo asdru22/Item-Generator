@@ -26,7 +26,7 @@ class Item:
             check_templates(self, self.data.get("template"))
             self.data.get("custom_data", {}).update(input_custom_data)
 
-        self.data.get("components").update(components)
+        self.data.get("components",{}).update(components)
         self.make_components()
 
         self.make_loot_table()
@@ -177,7 +177,7 @@ class Item:
             else:
                 self.match_component()
 
-        self.components.update(self.data.get("components", None))
+        self.components.update(self.data.get("components", {}))
         self.components["minecraft:item_model"] = f"{self.namespace}:{self.id}"
         self.components["minecraft:item_name"] = {
             "translate": f"item.{self.namespace}.{self.id}"

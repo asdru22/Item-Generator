@@ -1,6 +1,7 @@
 {
   "name": "Stone Glyph",
   "template": "material",
+  "type": "moon",
   "custom_data": {
     "glyph": {
       "type": "illager"
