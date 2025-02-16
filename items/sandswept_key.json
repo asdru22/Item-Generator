@@ -1,0 +1,9 @@
+{
+  "name": "Mistral Nugget",
+  "type": "cat",
+  "template": "material",
+  "texture": {
+    "x": 0,
+    "y": 6
+  }
+}
