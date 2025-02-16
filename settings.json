@@ -17,7 +17,7 @@
       "moon": {
         "minecraft:lore": [
           {
-            "translate": "item.haywire.tooltip_moon",
+            "translate": "tooltip.haywire.moon",
             "color": "white",
             "italic": false,
             "font": "haywire:main",
@@ -32,7 +32,37 @@
       "cog": {
         "minecraft:lore": [
           {
-            "translate": "item.haywire.tooltip_cog",
+            "translate": "tooltip.haywire.cog",
+            "color": "white",
+            "italic": false,
+            "font": "haywire:main",
+            "with": [
+              {
+                "translate": "pack.haywire"
+              }
+            ]
+          }
+        ]
+      },
+      "cat": {
+        "minecraft:lore": [
+          {
+            "translate": "tooltip.haywire.cat",
+            "color": "white",
+            "italic": false,
+            "font": "haywire:main",
+            "with": [
+              {
+                "translate": "pack.haywire"
+              }
+            ]
+          }
+        ]
+      },
+      "mix": {
+        "minecraft:lore": [
+          {
+            "translate": "tooltip.haywire.mix",
             "color": "white",
             "italic": false,
             "font": "haywire:main",
@@ -48,7 +78,7 @@
     "fallback": {
       "minecraft:lore": [
         {
-          "translate": "item.haywire.tooltip",
+          "translate": "tooltip.haywire",
           "color": "white",
           "italic": false,
           "font": "haywire:main",

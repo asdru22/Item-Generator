@@ -1,5 +1,6 @@
 {
   "name": "Mistral Ingot",
+  "type": "cat",
   "template": "material",
   "texture": {
     "x": 0,

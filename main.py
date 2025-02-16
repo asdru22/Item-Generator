@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import json
 import copy
 from PIL import Image
@@ -221,7 +222,6 @@ def check_templates(item, template):
     # Deep copy the template before updating to prevent reference issues
     template_data = copy.deepcopy(item.settings.templates.get(template, {}))
     item.data.update(template_data)
-
     # Merge components separately to avoid shared references
     item.data['components'] = deep_merge(
         item.data.get('components', {}),
@@ -356,7 +356,6 @@ class Settings:
 
         if "spritesheet" in _settings:
             self.sprites = make_sprites(_settings.get("spritesheet"))
-            print(self.sprites)
         else:
             self.sprites = None
 
@@ -420,5 +419,6 @@ def build():
 
 
 if __name__ == '__main__':
-    settings = Settings(json.load(open("settings.json")))
+    settings_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "settings.json")
+    settings = Settings(json.load(open(settings_path)))
     build()

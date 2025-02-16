@@ -1,5 +1,6 @@
 {
   "template": "material",
+  "type": "cat",
   "name": "Barrier Banner Pattern",
   "components": {
     "max_stack_size": 1,

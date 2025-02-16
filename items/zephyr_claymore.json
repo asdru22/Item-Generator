@@ -1,6 +1,7 @@
 {
   "name": "Zephyr Claymore",
   "base": "minecraft:netherite_sword",
+  "type": "cat",
   "components": {
     "!minecraft:damage_resistant": {},
     "minecraft:max_damage": 1300,

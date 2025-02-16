@@ -1,9 +1,13 @@
 {
-  "name": "Sandswept Key",
+  "name": "Diamond Key",
   "type": "cat",
   "template": "material",
+  "components": {
+    "minecraft:rarity": "uncommon",
+    "minecraft:tooltip_style": "haywire:rare"
+  },
   "texture": {
     "x": 0,
-    "y": 7
+    "y": 8
   }
 }
